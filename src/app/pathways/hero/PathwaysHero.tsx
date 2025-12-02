@@ -188,7 +188,7 @@ export default function PathwaysHero() {
       <YoutubeVideoModal
         isOpen={videoOpen}
         onClose={() => setVideoOpen(false)}
-        videoUrl="https://youtu.be/XlA5gs0WaCA"
+        videoUrl="https://youtu.be/NDnbzPvUOCc"
       />
 
       <RegistrationModal
