@@ -1,0 +1,266 @@
+/* ============================================
+   WRAPPER
+============================================ */
+.wrapper {
+  padding: 5rem 1.5rem 7rem;
+  background: linear-gradient(180deg, #f8f9fb, #f1f3f6);
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.header h2 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  color: #0f152a;
+  line-height: 1.15;
+}
+
+.green {
+  color: #a4bf3b;
+}
+
+.fadeIntense {
+  background: linear-gradient(90deg, #888, #aaa);
+  background-clip: text;               
+  -webkit-background-clip: text;      
+  color: transparent;                   
+  -webkit-text-fill-color: transparent; 
+  opacity: 0.9;
+}
+
+
+.header p {
+  margin-top: 1rem;
+  color: #596072;
+  font-size: 1.15rem;
+}
+
+/* ============================================
+   PHASE LIST
+============================================ */
+.list {
+  max-width: 920px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.2rem;
+}
+
+/* ============================================
+   PHASE CARD
+============================================ */
+.phaseCard {
+  background: #ffffff;
+  border-left: 8px solid #dfe3e8;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: 0.35s ease;
+  position: relative;
+}
+
+.phaseCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(255,255,255,0.6), transparent 60%);
+  opacity: 0;
+  transition: 0.4s ease;
+  pointer-events: none;
+}
+
+.phaseCard:hover::after {
+  opacity: 0.45;
+}
+
+.phaseOpen {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 65px rgba(0,0,0,0.12);
+}
+
+/* ============================================
+   PHASE HEADER
+============================================ */
+.phaseHeader {
+  width: 100%;
+  background: #fff;
+  padding: 1.6rem 2rem;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position: relative;
+}
+
+.phaseHeader:hover {
+  background: #fafafa;
+}
+
+.phaseHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.phaseBadge {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+
+  flex: 0 0 56px !important;   /* Prevent flex from stretching */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1 !important;   /* Prevent vertical stretching */
+  padding: 0 !important;       /* Prevent accidental expansion */
+  box-sizing: border-box;
+}
+
+
+.phaseHeader h3 {
+  font-size: 1.35rem;
+  margin: 0;
+  font-weight: 800;
+  color: #0f152a;
+}
+
+.phaseHeader p {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.chevron {
+  transition: transform 0.25s ease;
+}
+
+.phaseOpen .chevron {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   BODY
+============================================ */
+.phaseBody {
+  padding: 0 2rem 2.2rem;
+  animation: fadeUp 0.35s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.description {
+  margin: 1.2rem 0 1.5rem;
+  padding: 1.2rem 1.35rem;
+  border-left: 4px solid;
+  border-radius: 0.7rem;
+  color: #4b5563;
+  font-style: italic;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(3px);
+}
+
+/* ============================================
+   WEEK GRID
+============================================ */
+.weekGrid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+}
+
+.weekItem {
+  padding: 1rem 1.2rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e6e7eb;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.weekItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.09);
+}
+
+.weekItem::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 0%, rgba(255,255,255,0.5), transparent 60%);
+  opacity: 0;
+  transition: 0.35s ease;
+}
+
+.weekItem:hover::after {
+  opacity: 0.35;
+}
+
+.weekBadge {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+
+  flex: 0 0 48px !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+
+.weekInfo h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #10152a;
+  font-weight: 700;
+}
+
+.scripture {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.bookIcon {
+  width: 16px;
+}
+
+.phaseBadge:hover,
+.weekBadge:hover {
+  transform: scale(1.1);
+}

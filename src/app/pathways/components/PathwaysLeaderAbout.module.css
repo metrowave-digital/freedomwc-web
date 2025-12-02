@@ -1,0 +1,148 @@
+.section {
+  width: 100%;
+  padding: 80px 20px 100px; /* REDUCED HEIGHT */
+  background: #ffffff;
+  color: #10152a;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 10%,
+    rgba(164, 191, 59, 0.12),
+    transparent 75%
+  );
+  z-index: 0;
+}
+
+/* INNER LAYOUT */
+.inner {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px; /* tightened gap */
+  position: relative;
+  z-index: 2;
+  align-items: flex-start;
+}
+
+/* VERTICAL TITLE */
+.verticalTitleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 75px; /* narrower column */
+  margin-top: 30px; /* reduced top space */
+}
+
+.verticalTitle {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  text-transform: uppercase;
+  color: #10152a;
+}
+
+.verticalLine {
+  width: 3px;
+  height: 80px; /* shorter vertical line */
+  margin-top: 18px;
+  background: linear-gradient(
+    to bottom,
+    #a4bf3b 0%,
+    rgba(164, 191, 59, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* RIGHT SIDE */
+.contentWrapper {
+  display: flex;
+  gap: 40px; /* reduced space */
+}
+
+.photoWrapper {
+  position: relative;
+  width: 460px;   /* smaller image */
+  height: 460px;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  object-fit: cover;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  position: relative;
+}
+
+.glow {
+  position: absolute;
+  inset: -12px;
+  background: radial-gradient(
+    circle,
+    rgba(164, 191, 59, 0.28),
+    transparent 70%
+  );
+  filter: blur(45px);
+  border-radius: 24px;
+}
+
+/* TEXT */
+.textBlock {
+  max-width: 575px; /* tighter */
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.role {
+  font-size: 1rem;
+  opacity: 0.75;
+  margin-bottom: 22px; /* shorter */
+}
+
+.bio {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  margin-bottom: 16px; /* shorter */
+}
+
+.quote {
+  margin-left: 6px;
+  font-style: italic;
+  color: #a4bf3b;
+}
+
+/* MOBILE */
+@media (max-width: 1100px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .verticalTitleWrapper {
+    display: none;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photoWrapper {
+    width: 320px;
+    height: 320px;
+  }
+}

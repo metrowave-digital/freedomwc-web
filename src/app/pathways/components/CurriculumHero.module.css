@@ -1,0 +1,74 @@
+.wrapper {
+  position: relative;
+  padding: 6rem 1.5rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  text-align: center;
+  background: linear-gradient(135deg, #10152a 0%, #0b0e1d 100%);
+  overflow: hidden;
+  color: #fff;
+}
+
+.bgGlow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(164,191,59,0.35), transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("/textures/noise.png");
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+.inner {
+  position: relative;
+  z-index: 5;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.kicker {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a4bf3b;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.title span {
+  color: #a4bf3b;
+}
+
+.scripture {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.scripture span {
+  display: block;
+  margin-top: 0.4rem;
+  font-weight: 700;
+  font-style: normal;
+  color: #a4bf3b;
+}

@@ -1,0 +1,72 @@
+/* SIMPLE, CLEAN CTA SECTION */
+.wrapper {
+  background: #10152a;
+  padding: 2.8rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* CONTENT LAYOUT */
+.inner {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* TEXT BLOCK */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* BUTTON */
+.button {
+  padding: 0.7rem 1.8rem;
+  background: #a4bf3b;
+  color: #10152a;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 0.25s ease;
+}
+
+.button:hover {
+  background: #bfdc52;
+  transform: translateY(-2px);
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+}

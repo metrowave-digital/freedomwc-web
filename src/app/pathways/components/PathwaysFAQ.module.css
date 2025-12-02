@@ -1,0 +1,13 @@
+.section {
+  width: 100%;
+  padding: 80px 0;
+  background: #070a14;
+  position: relative;
+  z-index: 20;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

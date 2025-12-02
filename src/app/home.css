@@ -1,0 +1,274 @@
+/* ========================
+   COLORS
+========================= */
+:root {
+  --fwc-navy: #10152a;
+  --fwc-deep: #070a14;
+  --fwc-green: #a4bf3b;
+  --fwc-gray: #d1d5db;
+  --fwc-darkgray: #6b7280;
+}
+
+/* Wrapper */
+.landing-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background: var(--fwc-navy);
+}
+
+/* ========================
+   HERO
+========================= */
+.hero {
+  position: relative;
+  height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-bg {
+  object-fit: cover;
+  opacity: 0.38;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 1.5rem;
+  max-width: 700px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
+}
+
+.hero-sub {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: var(--fwc-gray);
+}
+
+/* buttons */
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ========================
+   BUTTON STYLES
+========================= */
+.btn-primary {
+  background: var(--fwc-green);
+  color: black;
+  font-weight: 700;
+  padding: 0.8rem 1.8rem;
+  border-radius: 0.6rem;
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #c5e35a;
+}
+
+.btn-outline {
+  padding: 0.8rem 1.8rem;
+  border: 2px solid white;
+  border-radius: 0.6rem;
+  transition: 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: black;
+}
+
+.btn-green {
+  background: var(--fwc-green);
+  color: black;
+  margin-top: 1.5rem;
+  display: inline-block;
+  padding: 0.8rem 1.9rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.btn-green:hover {
+  background: #d3ef60;
+}
+
+.btn-white {
+  background: white;
+  color: black;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+}
+
+.btn-white:hover {
+  background: #ececec;
+}
+
+/* ========================
+   PATHWAYS BLOCK
+========================= */
+.pathways-highlight {
+  background: var(--fwc-deep);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.pathways-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ========================
+   SECTION BASE STYLE
+========================= */
+.content-section,
+.alt-dark,
+.visit-section {
+  padding: 5rem 1.5rem;
+}
+
+.content-section {
+  background: var(--fwc-navy);
+}
+
+.alt-dark {
+  background: black;
+}
+
+.visit-section {
+  background: var(--fwc-navy);
+  text-align: center;
+}
+
+/* Titles */
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 1.4rem;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--fwc-gray);
+  margin-bottom: 3rem;
+}
+
+/* ========================
+   GRID LAYOUTS
+========================= */
+.card-grid-3 {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card-grid-2 {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========================
+   CARDS
+========================= */
+.info-card,
+.weekly-card,
+.ministry-card,
+.event-card {
+  background: rgba(255,255,255,0.03);
+  padding: 1.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.25s ease;
+}
+
+.info-card:hover,
+.weekly-card:hover,
+.ministry-card:hover,
+.event-card:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-3px);
+}
+
+.info-card h3,
+.weekly-card h3,
+.ministry-card h3,
+.event-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.info-card p,
+.weekly-card p,
+.ministry-card p,
+.event-card p {
+  color: var(--fwc-gray);
+  margin-top: 0.4rem;
+}
+
+/* ========================
+   FOOTER
+========================= */
+.footer {
+  background: black;
+  padding: 4rem 1.5rem;
+  color: var(--fwc-darkgray);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footer-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a:hover {
+  color: white;
+}

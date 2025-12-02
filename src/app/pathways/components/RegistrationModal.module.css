@@ -1,0 +1,351 @@
+/******************************************************
+ * v10 LUXURY MODAL — CLEANED + ACCOMMODATIONS FIXED
+ ******************************************************/
+
+/* =========================================
+   OVERLAY — Luxury bright glass
+========================================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.28), transparent 75%),
+    rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+
+  animation: overlayFade 0.4s ease-out forwards;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* =========================================
+   BACKGROUND ORBITS — luxury accents
+========================================= */
+.bgOrbits {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.26;
+
+  background:
+    radial-gradient(circle at 18% 12%, rgba(164,191,59,0.18), transparent 60%),
+    radial-gradient(circle at 88% 82%, rgba(140,170,255,0.22), transparent 70%);
+}
+
+/* =========================================
+   MODAL — Luxury Floating Glass
+========================================= */
+.modal {
+  position: relative;
+
+  background:
+    linear-gradient(165deg, rgba(255,255,255,0.56), rgba(255,255,255,0.34)),
+    rgba(255,255,255,0.40);
+
+  border-radius: 26px;
+  padding: 48px 44px 38px;
+
+  border: 1px solid rgba(164,191,59,0.24);
+  box-shadow:
+    0 18px 42px rgba(0,0,0,0.10),
+    0 0 18px rgba(164,191,59,0.14);
+
+  width: 100%;
+  max-width: 760px;
+  max-height: 88vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  animation: modalFloat 0.45s ease-out forwards;
+}
+
+@keyframes modalFloat {
+  from { opacity: 0; transform: translateY(60px) scale(0.93); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================
+   TOP-RIGHT EXIT CONTROLS
+========================================= */
+.topRightExit {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exitText {
+  color: #0B0F12;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  opacity: 0.78;
+  transition: opacity .2s ease;
+}
+
+.exitText:hover {
+  opacity: 1;
+}
+
+.closeIconBtn {
+  width: 32px;
+  height: 32px;
+
+  background: rgba(255,255,255,0.95);
+  border: 1.2px solid rgba(164,191,59,0.28);
+  border-radius: 50%;
+
+  color: #0B0F12;
+  font-size: 17px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform .18s ease, border-color .18s ease;
+}
+
+.closeIconBtn:hover {
+  transform: scale(1.12);
+  border-color: #A4BF3B;
+}
+
+/* =========================================
+   HEADER — premium spacing
+========================================= */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  opacity: 0.78;
+  color: #0B0F12;
+}
+
+.title {
+  font-size: 1.92rem;
+  font-weight: 800;
+  color: #0B0F12;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: rgba(11,14,18,0.90);
+  line-height: 1.68;
+  max-width: 540px;
+}
+
+/* Divider below header */
+.headerDivider {
+  width: 100%;
+  height: 1px;
+  margin: 18px 0 2px;
+  background: linear-gradient(
+    to right,
+    rgba(164,191,59,0.30),
+    rgba(164,191,59,0.05)
+  );
+}
+
+/* =========================================
+   WIZARD TYPOGRAPHY — :global for CSS modules
+========================================= */
+.modal :global(h3),
+.modal :global(h4) {
+  color: #0B0F12;
+  font-weight: 700;
+  margin-top: 26px;
+  margin-bottom: 6px;
+}
+
+.modal :global(p),
+.modal :global(span) {
+  color: rgba(11,14,18,0.90);
+  line-height: 1.62;
+}
+
+/* =========================================
+   FORM FIELDS & LABELS
+========================================= */
+.modal label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0B0F12;
+  margin-bottom: 4px;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 14px 16px;
+
+  background: rgba(255,255,255,0.97);
+  border: 1.4px solid rgba(164,191,59,0.26);
+  border-radius: 12px;
+
+  font-size: 1rem;
+  color: #0B0F12;
+
+  transition: border-color .18s ease;
+}
+
+.modal input::placeholder,
+.modal textarea::placeholder {
+  color: rgba(0,0,0,0.45);
+}
+
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+  border-color: #A4BF3B;
+}
+
+.modal :global(.form-group),
+.modal :global(.field),
+.modal div[data-field] {
+  margin-bottom: 22px;
+}
+
+/* =========================================
+   ACCOMMODATIONS PAGE — override Tailwind grid/spacing
+   Targets: <div className="grid gap-4"> + inner .space-y-2
+========================================= */
+
+/* Outer block: "Do you need any support or accommodations?" */
+.modal :global(.grid.gap-4) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;           /* spacing between question + options */
+  margin-top: 16px;
+  margin-bottom: 10px;
+}
+
+/* The question text */
+.modal :global(.grid.gap-4 > p) {
+  font-size: 0.95rem;
+  color: #0B0F12;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Inner options wrapper: .space-y-2 */
+.modal :global(.grid.gap-4 .space-y-2) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;          /* even spacing between labels */
+  margin: 0;
+}
+
+/* Individual checkbox rows */
+.modal :global(.grid.gap-4 .space-y-2 label) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 0.95rem;
+  color: #0B0F12;
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+/* Checkbox sizing + brand accent */
+.modal :global(.grid.gap-4 .space-y-2 input[type="checkbox"]) {
+  width: 16px;
+  height: 16px;
+  accent-color: #A4BF3B;
+}
+
+/* Extra spacing for textarea when 'Other' is active */
+.modal :global(.grid.gap-4 .space-y-2 textarea) {
+  margin-top: 6px;
+}
+
+/********************************************
+ * v10.2 — UNIVERSAL WIZARD BLOCK FIX
+ * Applies to ANY <div className="grid gap-4">
+ ********************************************/
+
+.modal :global(.grid.gap-4) {
+  display: flex;                 /* stop Tailwind grid layout */
+  flex-direction: column;        /* vertical stack */
+  gap: 14px !important;          /* consistent luxury spacing */
+  margin: 14px 0 10px;           /* controlled vertical placement */
+  padding: 0;
+  position: relative;
+}
+
+/* Fix checkboxes inside these sections */
+.modal :global(.grid.gap-4 label) {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+
+  color: #0B0F12 !important;
+  font-size: 0.95rem !important;
+  font-weight: 500;
+  padding: 4px 0;
+  margin: 0 !important;
+}
+
+/* Checkbox styling */
+.modal :global(.grid.gap-4 input[type="checkbox"]) {
+  width: 16px;
+  height: 16px;
+  accent-color: #A4BF3B;
+}
+
+/* Inputs in these blocks */
+.modal :global(.grid.gap-4 input[type="text"]),
+.modal :global(.grid.gap-4 input[type="date"]),
+.modal :global(.grid.gap-4 input:not([type="checkbox"])) {
+  width: 100%;
+  margin: 0;
+}
+
+/* KILL any Tailwind margin leaks */
+.modal :global(.grid.gap-4 > * ) {
+  margin: 0 !important;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 640px) {
+  .modal {
+    padding: 34px 20px 24px;
+  }
+
+  .topRightExit {
+    top: 10px;
+    right: 10px;
+  }
+}

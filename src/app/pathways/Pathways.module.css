@@ -1,0 +1,133 @@
+/* ============================================
+   PAGE WRAPPER
+============================================ */
+.pageWrapper {
+  min-height: 100vh;
+  background: #070a14;
+  overflow-x: hidden;
+  color: white;
+  position: relative;
+}
+
+/* ============================================
+   SECTION BASE (NO GAPS)
+============================================ */
+.section {
+  width: 100%;
+  position: relative;
+  background: #070a14;
+  margin: 0;
+  padding: 0; /* no spacing at edges */
+}
+
+/* inner spacing so edges stay flush */
+.sectionInner {
+  padding: 4rem 0;
+}
+
+/* ============================================
+   CINEMATIC TRANSITIONS (NO GAPS)
+============================================ */
+.transitionTop {
+  position: relative;
+  width: 100%;
+  height: 120px;
+
+  background: linear-gradient(
+    to top,
+    rgba(7,10,20,1) 0%,
+    rgba(7,10,20,0.6) 40%,
+    rgba(7,10,20,0) 100%
+  );
+
+  pointer-events: none;
+}
+
+.transitionBottom {
+  position: relative;
+  width: 100%;
+  height: 120px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(7,10,20,1) 0%,
+    rgba(7,10,20,0.6) 40%,
+    rgba(7,10,20,0) 100%
+  );
+
+  pointer-events: none;
+}
+
+/* ============================================
+   FADE-IN ANIMATION
+============================================ */
+.fadeIn {
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   SEAMLESS HERO MERGE WITH HEADER
+============================================ */
+
+.heroWrapper {
+  margin-top: -40px; /* pull hero up under header */
+  padding-top: 40px; /* keep content readable */
+  background: linear-gradient(
+    to top,
+    #070a14 50%,
+    rgba(7,10,20,0.5) 90%,
+    rgba(7,10,20,0) 100%
+  );
+}
+
+/* ============================================
+   SCROLL TO TOP BUTTON
+============================================ */
+.scrollTopBtn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  background: #a4bf3b;
+  color: #10152a;
+  font-weight: bold;
+  border-radius: 999px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 20px rgba(164,191,59,0.45);
+  transition: 0.25s ease;
+  cursor: pointer;
+  z-index: 8000;
+}
+
+.scrollTopBtn:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: #c8e65c;
+  box-shadow: 0 0 32px rgba(200,230,92,0.6);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 768px) {
+  .sectionInner {
+    padding: 3rem 0;
+  }
+}
