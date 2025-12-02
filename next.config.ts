@@ -1,8 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+
+  async redirects() {
+    return [
+      {
+        source: "/pathways",
+        destination: "https://pathways.freedomwc.org",
+        permanent: true,
+      },
+      {
+        source: "/pathways/:slug*",
+        destination: "https://pathways.freedomwc.org/:slug*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
