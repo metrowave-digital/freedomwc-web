@@ -185,12 +185,6 @@ function prettyPhase(phase?: ProfileViewModel['pathwaysPhase']) {
   }
 }
 
-function safeUploadUrl(rel?: PayloadRelation<PayloadUpload>) {
-  if (!rel) return undefined
-  if (typeof rel === 'string') return undefined
-  return rel.url
-}
-
 function resolveImageSrc(
   rel?: PayloadRelation<PayloadUpload>,
 ): string | undefined {

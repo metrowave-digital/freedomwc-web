@@ -7,7 +7,6 @@ import styles from "./PortalHeader.module.css"
 import PortalBreadcrumb from "../breadcrumb/PortalBreadcrumb"
 import PortalPageTitle from "../pageTitles/PortalPageTitle"
 import PortalQuickActions from "../quickActions/PortalQuickActions"
-import PortalQuickActionsMobile from "../quickActions/PortalQuickActions.mobile"
 
 import type { WebUser } from "../../../../app/access/roles"
 import { getUserDisplayName } from "../../../../app/access/roles"
@@ -77,11 +76,6 @@ export default function PortalHeader({ user }: { user: WebUser }) {
     return () => controller.abort()
   }, [])
 
-  /* ----------------------------------
-     Reset image state when avatar changes
-  ---------------------------------- */
-
-
   const avatarSrc = avatarFile
     ? `/api/image/${avatarFile}`
     : undefined
@@ -98,8 +92,8 @@ export default function PortalHeader({ user }: { user: WebUser }) {
         <PortalPageTitle user={user} />
 
         <div className={styles.actions}>
+          {/* Desktop quick actions only */}
           <PortalQuickActions user={user} />
-          <PortalQuickActionsMobile user={user} />
 
           {/* Profile avatar */}
           <Link
@@ -118,15 +112,15 @@ export default function PortalHeader({ user }: { user: WebUser }) {
 
               {/* Avatar image */}
               {avatarSrc && (
-  // eslint-disable-next-line @next/next/no-img-element
-  <img
-    key={avatarSrc}          
-    src={avatarSrc}
-    alt={displayName}
-    onLoad={() => setImgLoaded(true)}
-    onError={() => setImgLoaded(false)}
-  />
-)}
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={avatarSrc}
+                  src={avatarSrc}
+                  alt={displayName}
+                  onLoad={() => setImgLoaded(true)}
+                  onError={() => setImgLoaded(false)}
+                />
+              )}
             </div>
 
             <span className={styles.profileLabel}>
