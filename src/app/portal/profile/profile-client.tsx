@@ -191,6 +191,24 @@ function safeUploadUrl(rel?: PayloadRelation<PayloadUpload>) {
   return rel.url
 }
 
+function resolveImageSrc(
+  rel?: PayloadRelation<PayloadUpload>,
+): string | undefined {
+  if (!rel) return undefined
+
+  // Relationship stored as ID
+  if (typeof rel === 'string') {
+    return `/api/image/${rel}`
+  }
+
+  // Fully populated media object
+  if (typeof rel === 'object' && typeof rel.id === 'string') {
+    return `/api/image/${rel.id}`
+  }
+
+  return undefined
+}
+
 
 export default function ProfileClient({ initialProfile, roles }: Props) {
 const [profile, setProfile] = useState<ProfileViewModel>({
@@ -213,18 +231,22 @@ const [profile, setProfile] = useState<ProfileViewModel>({
 )
   const isLeader = useMemo(() => hasRole(roles, 'leader') || isStaff, [roles, isStaff])
 
-  const avatarUrl =
-  avatarPreview || safeUploadUrl(profile.avatar)
+  const avatarUrl = useMemo(
+  () =>
+    avatarPreview ??
+    resolveImageSrc(profile.avatar),
+  [avatarPreview, profile.avatar],
+)
+
 
   useEffect(() => {
-  if (editing) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = ''
-  }
+  if (!editing) return
+
+  const original = document.body.style.overflow
+  document.body.style.overflow = 'hidden'
 
   return () => {
-    document.body.style.overflow = ''
+    document.body.style.overflow = original
   }
 }, [editing])
 
@@ -879,7 +901,7 @@ close()
   {profile.badges?.length ? (
     <div className={styles.badgeGrid}>
       {profile.badges.map((b, idx) => {
-        const url = safeUploadUrl(b.icon)
+        const url = resolveImageSrc(b.icon)
 
         return (
           <div key={idx} className={styles.badge}>
@@ -1161,7 +1183,8 @@ function renderForm(
 
       const uploadedMedia = await uploadRes.json()
 
-      setAvatarPreview(uploadedMedia.url)
+      setAvatarPreview(`/api/image/${uploadedMedia.id}`)
+
 
       setDraft((prev) => ({
         ...prev,
@@ -1336,18 +1359,17 @@ if (section === 'volunteer') {
               type="button"
               className={`${styles.pickChip} ${on ? styles.pickChipOn : ''}`}
               onClick={() => {
-  const current: VolunteerInterest[] = Array.isArray(draft.volunteerInterests)
-    ? draft.volunteerInterests
-    : []
+  setDraft((prev) => {
+    const current = Array.isArray(prev.volunteerInterests)
+      ? prev.volunteerInterests
+      : []
 
-  const next: VolunteerInterest[] = current.includes(opt)
-    ? current.filter((v) => v !== opt)
-    : [...current, opt]
+    const next = current.includes(opt)
+      ? current.filter((v) => v !== opt)
+      : [...current, opt]
 
-  setDraft((prev) => ({
-    ...prev,
-    volunteerInterests: next,
-  }))
+    return { ...prev, volunteerInterests: next }
+  })
 }}
             >
               {opt}
@@ -1401,12 +1423,19 @@ if (section === 'volunteer') {
                 type="button"
                 className={`${styles.pickChip} ${on ? styles.pickChipOn : ''}`}
                 onClick={() => {
-                  const next: SpiritualGift[] = on
-                    ? selected.filter((g) => g !== opt)
-                    : [...selected, opt]
+  setDraft((prev) => {
+    const current = Array.isArray(prev.spiritualGifts)
+      ? prev.spiritualGifts
+      : []
 
-                  setDraft({ ...draft, spiritualGifts: next })
-                }}
+    const next = current.includes(opt)
+      ? current.filter((g) => g !== opt)
+      : [...current, opt]
+
+    return { ...prev, spiritualGifts: next }
+  })
+}}
+
               >
                 {opt}
               </button>

@@ -45,14 +45,6 @@ function getPrimaryRoleLabel(
   return "Member"
 }
 
-function safeAvatarUrl(
-  avatar: unknown,
-): string | undefined {
-  if (!avatar || typeof avatar !== "object") return undefined
-  const a = avatar as { url?: unknown }
-  return typeof a.url === "string" ? a.url : undefined
-}
-
 function safeDisplayName(
   value: unknown,
 ): string | undefined {
@@ -70,6 +62,25 @@ function getInitials(name: string) {
     .join("")
 }
 
+/**
+ * Extract filename from Payload media object
+ * "/api/media/file/75-1.jpeg" → "75-1.jpeg"
+ */
+function getAvatarFileId(
+  avatar: unknown,
+): string | undefined {
+  if (!avatar || typeof avatar !== "object") return undefined
+
+  const a = avatar as { url?: unknown }
+  if (typeof a.url !== "string") return undefined
+
+  return a.url.split("/").pop()
+}
+
+/* ======================================================
+   Component
+====================================================== */
+
 export default function SidebarProfile({
   user,
 }: {
@@ -78,12 +89,13 @@ export default function SidebarProfile({
   const { minimized } = useSidebar()
 
   const [imgLoaded, setImgLoaded] = useState(false)
-  const [avatarUrl, setAvatarUrl] = useState<
+  const [avatarSrc, setAvatarSrc] = useState<
     string | undefined
   >(undefined)
   const [profileName, setProfileName] = useState<
     string | undefined
   >(undefined)
+
   const roleLabel = getPrimaryRoleLabel(user.roles)
 
   /* ======================================================
@@ -109,8 +121,10 @@ export default function SidebarProfile({
       .then((profile) => {
         if (!mounted || !profile) return
 
-        setAvatarUrl(
-          safeAvatarUrl(profile.avatar),
+        const fileId = getAvatarFileId(profile.avatar)
+
+        setAvatarSrc(
+          fileId ? `/api/image/${fileId}` : undefined,
         )
 
         setProfileName(
@@ -123,6 +137,10 @@ export default function SidebarProfile({
       mounted = false
     }
   }, [])
+
+  /* ======================================================
+     Render
+  ====================================================== */
 
   return (
     <Link
@@ -142,11 +160,11 @@ export default function SidebarProfile({
           {initials}
         </span>
 
-        {/* Avatar image */}
-        {avatarUrl && (
+        {/* Avatar image (proxied) */}
+        {avatarSrc && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={avatarUrl}
+            src={avatarSrc}
             alt={displayName}
             className={styles.avatarImg}
             onLoad={() => setImgLoaded(true)}
@@ -162,8 +180,8 @@ export default function SidebarProfile({
               {displayName}
             </span>
             <span className={styles.role}>
-  {roleLabel}
-</span>
+              {roleLabel}
+            </span>
           </div>
 
           <MoreHorizontal size={18} />

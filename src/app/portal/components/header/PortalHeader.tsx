@@ -13,20 +13,16 @@ import type { WebUser } from "../../../../app/access/roles"
 import { getUserDisplayName } from "../../../../app/access/roles"
 
 /* ======================================================
-   Helpers (same logic as SidebarProfile)
+   Helpers
 ====================================================== */
 
-function safeAvatarUrl(
-  avatar: unknown,
-): string | undefined {
+function safeAvatarFilename(avatar: unknown): string | undefined {
   if (!avatar || typeof avatar !== "object") return undefined
-  const a = avatar as { url?: unknown }
-  return typeof a.url === "string" ? a.url : undefined
+  const a = avatar as { filename?: unknown }
+  return typeof a.filename === "string" ? a.filename : undefined
 }
 
-function safeDisplayName(
-  value: unknown,
-): string | undefined {
+function safeDisplayName(value: unknown): string | undefined {
   return typeof value === "string" && value.trim()
     ? value.trim()
     : undefined
@@ -45,22 +41,10 @@ function getInitials(name: string) {
    Component
 ====================================================== */
 
-export default function PortalHeader({
-  user,
-}: {
-  user: WebUser
-}) {
-  const [avatarUrl, setAvatarUrl] = useState<
-    string | undefined
-  >(undefined)
-  const [profileName, setProfileName] = useState<
-    string | undefined
-  >(undefined)
+export default function PortalHeader({ user }: { user: WebUser }) {
+  const [avatarFile, setAvatarFile] = useState<string | undefined>()
+  const [profileName, setProfileName] = useState<string | undefined>()
   const [imgLoaded, setImgLoaded] = useState(false)
-
-  /* ----------------------------------
-     Resolve display name (same rule)
-  ---------------------------------- */
 
   const displayName =
     profileName ||
@@ -70,28 +54,37 @@ export default function PortalHeader({
   const initials = getInitials(displayName)
 
   /* ----------------------------------
-     Fetch profile once (client)
+     Fetch profile (client-safe)
   ---------------------------------- */
 
   useEffect(() => {
-    let mounted = true
+    const controller = new AbortController()
 
-    fetch("/api/portal/profile")
+    fetch("/api/portal/profile", { signal: controller.signal })
       .then((res) => (res.ok ? res.json() : null))
       .then((profile) => {
-        if (!mounted || !profile) return
+        if (!profile) return
 
-        setAvatarUrl(safeAvatarUrl(profile.avatar))
-        setProfileName(
-          safeDisplayName(profile.displayName),
-        )
+        setAvatarFile(safeAvatarFilename(profile.avatar))
+        setProfileName(safeDisplayName(profile.displayName))
       })
-      .catch(() => {})
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          console.error("Profile fetch failed", err)
+        }
+      })
 
-    return () => {
-      mounted = false
-    }
+    return () => controller.abort()
   }, [])
+
+  /* ----------------------------------
+     Reset image state when avatar changes
+  ---------------------------------- */
+
+
+  const avatarSrc = avatarFile
+    ? `/api/image/${avatarFile}`
+    : undefined
 
   return (
     <header className={styles.header}>
@@ -105,10 +98,7 @@ export default function PortalHeader({
         <PortalPageTitle user={user} />
 
         <div className={styles.actions}>
-          {/* Desktop actions */}
           <PortalQuickActions user={user} />
-
-          {/* Mobile actions */}
           <PortalQuickActionsMobile user={user} />
 
           {/* Profile avatar */}
@@ -127,15 +117,16 @@ export default function PortalHeader({
               </span>
 
               {/* Avatar image */}
-              {avatarUrl && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={avatarUrl}
-                  alt={displayName}
-                  onLoad={() => setImgLoaded(true)}
-                  onError={() => setImgLoaded(false)}
-                />
-              )}
+              {avatarSrc && (
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    key={avatarSrc}          
+    src={avatarSrc}
+    alt={displayName}
+    onLoad={() => setImgLoaded(true)}
+    onError={() => setImgLoaded(false)}
+  />
+)}
             </div>
 
             <span className={styles.profileLabel}>
