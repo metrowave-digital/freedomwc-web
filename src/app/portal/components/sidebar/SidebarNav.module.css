@@ -1,0 +1,187 @@
+/* ======================================================
+   Root
+====================================================== */
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ======================================================
+   Groups
+====================================================== */
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================
+   Section headers (NON-LINK GROUPS)
+====================================================== */
+
+.sectionHeader {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: rgba(17, 24, 39, 0.65);
+  cursor: pointer;
+
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sectionHeader:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(17, 24, 39, 0.85);
+}
+
+/* ======================================================
+   Item row (link + chevron)
+====================================================== */
+
+.itemRow {
+  display: flex;
+  align-items: center;
+}
+
+/* ======================================================
+   Items (LINKS)
+====================================================== */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  color: #111827;
+  text-decoration: none;
+
+  transition: background 0.15s ease;
+}
+
+.item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.active {
+  background: rgba(99, 102, 241, 0.12);
+  font-weight: 500;
+}
+
+/* ======================================================
+   Chevron button
+====================================================== */
+
+.chevronBtn {
+  all: unset;
+  cursor: pointer;
+
+  padding: 6px;
+  margin-right: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ======================================================
+   Chevron (VISIBLE + MODERN)
+====================================================== */
+
+.chevron {
+  color: rgba(17, 24, 39, 0.7);
+  opacity: 1;
+
+  transition: transform 0.2s ease, color 0.15s ease;
+}
+
+/* 🔥 Top-level parents get stronger chevrons */
+.chevronStrong {
+  color: #111827;
+}
+
+/* Open state */
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Hover feedback (subtle) */
+.chevronBtn:hover .chevron {
+  color: #111827;
+}
+
+/* ======================================================
+   Children container
+====================================================== */
+
+.children {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-left: 14px;
+  padding-left: 10px;
+
+  border-left: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+/* ======================================================
+   Depth spacing
+====================================================== */
+
+.group[data-depth="1"] .item {
+  padding-left: 16px;
+}
+
+.group[data-depth="2"] .item {
+  padding-left: 22px;
+}
+
+.group[data-depth="3"] .item {
+  padding-left: 28px;
+}
+
+/* ======================================================
+   Sleek child items (under headers like Overview)
+====================================================== */
+
+.group[data-depth="2"] .item {
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  border-radius: 6px;
+  opacity: 0.85;
+}
+
+.group[data-depth="2"] .item:hover {
+  opacity: 1;
+}
+
+/* Active child link */
+.group[data-depth="2"] .active {
+  background: rgba(99, 102, 241, 0.08);
+  font-weight: 500;
+}
+
+.group[data-depth="1"] .children {
+  margin-left: 12px;
+  padding-left: 8px;
+  gap: 3px;
+}
+
+.group[data-depth="1"] .children {
+  border-left: 1px solid rgba(17, 24, 39, 0.06);
+}

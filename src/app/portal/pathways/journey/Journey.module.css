@@ -1,0 +1,183 @@
+/* app/portal/pathways/journey/Journey.module.css */
+
+.page {
+  width: 100%;
+  max-width: 1100px;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+/* ======================================================
+   Header
+====================================================== */
+
+.header {
+  margin-bottom: 1.75rem;
+}
+
+.header h1 {
+  font-size: 2.25rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  margin-top: 0.5rem;
+  max-width: 720px;
+  color: var(--text-secondary);
+}
+
+/* ======================================================
+   Progress
+====================================================== */
+
+.progressCard {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.progressMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.progressLabel {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.progressBar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--fwc-green),
+    #9acd32
+  );
+  border-radius: inherit;
+}
+
+.progressHint {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+/* ======================================================
+   Phases Grid
+====================================================== */
+
+.phases {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ======================================================
+   Phase Card
+====================================================== */
+
+.phaseCard {
+  position: relative;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.phaseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.phaseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.phaseOrder {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.checkIcon {
+  color: var(--fwc-green);
+}
+
+/* ======================================================
+   Text
+====================================================== */
+
+.phaseCard h3 {
+  font-size: 1.15rem;
+  font-weight: 750;
+  margin-bottom: 0.25rem;
+}
+
+.phaseTheme {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.phaseDescription {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ======================================================
+   States
+====================================================== */
+
+.completed {
+  opacity: 0.75;
+}
+
+.current {
+  border-color: var(--fwc-green);
+  background: linear-gradient(
+    180deg,
+    rgba(111, 143, 30, 0.18),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+/* ======================================================
+   CTA
+====================================================== */
+
+.currentAction {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #070a14;
+  background: var(--fwc-green);
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  border: none;
+  cursor: pointer;
+}

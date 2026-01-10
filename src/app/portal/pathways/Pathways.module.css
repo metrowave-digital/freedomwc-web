@@ -1,0 +1,288 @@
+/* ======================================================
+   PAGE WRAPPER
+====================================================== */
+
+.page {
+  width: 100%;
+  color: white;
+}
+
+/* ======================================================
+   HEADER
+====================================================== */
+
+.header {
+  max-width: 720px;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.header p {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--fwc-gray);
+}
+
+/* ======================================================
+   CURRENT PHASE
+====================================================== */
+
+.current {
+  background: linear-gradient(
+    to bottom right,
+    rgba(164, 191, 59, 0.15),
+    rgba(7, 10, 20, 0.9)
+  );
+  border-radius: 1rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 4rem;
+}
+
+.currentInner {
+  max-width: 640px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(164, 191, 59, 0.2);
+  color: var(--fwc-green);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.current h2 {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.current p {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--fwc-gray);
+}
+
+/* ======================================================
+   PROGRESS
+====================================================== */
+
+.progressWrap {
+  margin-top: 1.75rem;
+}
+
+.progressLabel {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  color: var(--fwc-gray);
+}
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  width: 50%;
+  height: 100%;
+  background: var(--fwc-green);
+  box-shadow: 0 0 12px rgba(164, 191, 59, 0.6);
+}
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+
+.primaryBtn {
+  display: inline-block;
+  margin-top: 2rem;
+  background: var(--fwc-green);
+  color: #070a14;
+  font-weight: 800;
+  padding: 0.85rem 1.75rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.primaryBtn:hover {
+  background: #cfe96b;
+  transform: translateY(-2px);
+}
+
+.secondaryBtn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  border: 2px solid white;
+  padding: 0.75rem 1.6rem;
+  border-radius: 0.6rem;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.secondaryBtn:hover {
+  background: white;
+  color: black;
+}
+
+/* ======================================================
+   PHASES
+====================================================== */
+
+.phases h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.phaseCard {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0.75rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.phaseCard h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.phaseCard p {
+  margin-top: 0.4rem;
+  color: var(--fwc-gray);
+}
+
+/* ======================================================
+   STATUS
+====================================================== */
+
+.statusActive {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--fwc-green);
+}
+
+.statusLocked {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--fwc-darkgray);
+}
+
+/* ======================================================
+   CTA
+====================================================== */
+
+.cta {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  max-width: 640px;
+}
+
+.cta h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.cta p {
+  margin-top: 0.6rem;
+  color: var(--fwc-gray);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .current {
+    padding: 2rem;
+  }
+}
+
+/* ======================================================
+   PATHWAYS SUB-LAYOUT
+====================================================== */
+
+.pathwaysShell {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.subnav {
+  width: 220px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  height: fit-content;
+}
+
+.subnav h4 {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fwc-gray);
+  margin-bottom: 1rem;
+}
+
+.subnav nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.subnav a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: white;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.4rem;
+  transition: 0.2s ease;
+}
+
+.subnav a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .pathwaysShell {
+    flex-direction: column;
+  }
+
+  .subnav {
+    width: 100%;
+  }
+}

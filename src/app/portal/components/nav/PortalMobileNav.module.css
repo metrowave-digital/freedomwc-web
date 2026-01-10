@@ -1,0 +1,165 @@
+/* Hidden on desktop */
+.mobileNav,
+.profileAvatar,
+.brandBar {
+  display: none;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+@media (max-width: 768px) {
+  /* ===========================
+     Bottom Navigation
+  =========================== */
+  .mobileNav {
+    position: fixed;
+    bottom: 34px; /* leaves space for brand bar */
+    left: 0;
+    right: 0;
+    height: 68px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9000;
+  }
+
+  .navItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.65rem;
+    color: #6b7280;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .navItem:hover {
+    color: #111827;
+  }
+
+  .active {
+    color: #111827;
+    font-weight: 600;
+  }
+
+  /* ===========================
+     Profile Avatar
+  =========================== */
+  .profileAvatar {
+    display: flex;
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #a4bf3b, #6f8f1e);
+    color: #070a14;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    text-decoration: none;
+    z-index: 9001;
+  }
+
+  /* ===========================
+     Submenu
+  =========================== */
+  .subMenu {
+    position: fixed;
+    bottom: 102px; /* nav + brand bar */
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    z-index: 8999;
+    animation: slideUp 0.35s ease;
+  }
+
+  .subMenu a {
+    font-size: 0.8rem;
+    color: #111827;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* ===========================
+     Brand Bar
+  =========================== */
+  .brandBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 34px;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    text-transform: uppercase;
+    z-index: 8998;
+  }
+
+  .brandSection {
+    color: #111827;
+  }
+
+  .separator {
+    opacity: 0.5;
+  }
+
+  .brandLink {
+    color: #6f8f1e;
+    text-decoration: none;
+  }
+
+  .brandLink:hover {
+    text-decoration: underline;
+  }
+
+  /* ===========================
+     Chevron
+  =========================== */
+  .chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .open {
+    transform: rotate(180deg);
+  }
+}
+
+/* ===========================
+   Animations
+=========================== */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-bottom: 7.5rem;
+  }
+}

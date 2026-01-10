@@ -1,0 +1,97 @@
+/* ======================================================
+   Container
+====================================================== */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-bottom: 0.35rem;
+
+  /* Route-change animation */
+  animation: breadcrumbFade 0.25s ease-out;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .breadcrumb {
+    animation: none;
+  }
+}
+
+/* ======================================================
+   Animation
+====================================================== */
+
+@keyframes breadcrumbFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======================================================
+   Links & Items
+====================================================== */
+
+.link {
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.separator {
+  margin: 0 0.15rem;
+  color: #9ca3af;
+}
+
+.current {
+  color: #111827;
+  font-weight: 600;
+}
+
+.ellipsis {
+  color: #9ca3af;
+}
+
+/* ======================================================
+   Responsive Collapse
+====================================================== */
+
+.mobileOnly {
+  display: none;
+}
+
+.desktopOnly {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 0.65rem;
+  }
+
+  .mobileOnly {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+}

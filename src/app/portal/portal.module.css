@@ -1,0 +1,162 @@
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.header p {
+  margin-top: 0.25rem;
+  color: #6b7280;
+}
+
+/* Grid */
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* Cards */
+
+.card {
+  background: white;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.card p {
+  margin-top: 0.35rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+/* Feature */
+
+.feature {
+  grid-column: span 2;
+  background: linear-gradient(
+    to bottom right,
+    rgba(164,191,59,0.2),
+    white
+  );
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #6f8f1e;
+  text-transform: uppercase;
+}
+
+.feature h2 {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.scripture {
+  margin-top: 0.5rem;
+  color: #374151;
+}
+
+/* Buttons */
+
+.primaryAction {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--fwc-green);
+  color: #070a14;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.secondaryAction {
+  margin-top: 1rem;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* Variants */
+
+.vertical {
+  grid-row: span 2;
+}
+
+.media {
+  background: #f9fafb;
+}
+
+.events {
+  background: #f9fafb;
+}
+
+/* ======================================================
+   Skeleton Loader
+====================================================== */
+
+.skeletonTitle {
+  width: 260px;
+  height: 2.2rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    #1f2933 25%,
+    #374151 37%,
+    #1f2933 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.skeletonSub {
+  margin-top: 0.5rem;
+  width: 180px;
+  height: 1rem;
+  border-radius: 0.375rem;
+  background: #1f2933;
+}
+
+.skeletonCard {
+  height: 140px;
+  border-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    #1f2933 25%,
+    #374151 37%,
+    #1f2933 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}

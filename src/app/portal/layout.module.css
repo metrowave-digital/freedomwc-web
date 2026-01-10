@@ -1,0 +1,226 @@
+/* ======================================================
+   Shell Layout
+====================================================== */
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+/* ======================================================
+   Main Content Area
+====================================================== */
+
+.main {
+  flex: 1;
+  padding: 1.75rem 2rem;
+  overflow-x: hidden;
+  color: #111827; /* 🔥 default readable text */
+}
+
+/* ======================================================
+   Responsive Adjustments
+====================================================== */
+
+@media (max-width: 1024px) {
+  .main {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile layout (sidebar hidden, bottom nav active) */
+@media (max-width: 768px) {
+  .shell {
+    flex-direction: column;
+  }
+
+  .main {
+    padding: 1rem;
+    padding-bottom: 6.5rem; /* ✅ single source of truth */
+  }
+}
+
+/* ======================================================
+   Content Helpers (used across portal pages)
+====================================================== */
+
+.header {
+  margin-bottom: 2.25rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  color: #4b5563; /* 🔥 improved contrast */
+}
+
+/* ======================================================
+   Grid System
+====================================================== */
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* Default cards */
+.card {
+  grid-column: span 4;
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+  .card {
+    grid-column: span 6;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .card {
+    grid-column: span 12;
+  }
+}
+
+/* ======================================================
+   Cards
+====================================================== */
+
+.card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.6rem;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.card p {
+  margin-top: 0.4rem;
+  color: #374151; /* 🔥 readable body text */
+  font-size: 0.9rem;
+}
+
+/* ======================================================
+   Feature Cards
+====================================================== */
+
+.feature {
+  grid-column: span 8;
+  background: linear-gradient(
+    135deg,
+    rgba(164, 191, 59, 0.18),
+    #ffffff
+  );
+}
+
+/* Feature card responsive */
+@media (max-width: 1024px) {
+  .feature {
+    grid-column: span 12;
+  }
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #6f8f1e;
+  text-transform: uppercase;
+}
+
+.feature h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.scripture {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+/* ======================================================
+   Buttons
+====================================================== */
+
+.primaryAction {
+  margin-top: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--fwc-green);
+  color: #070a14;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primaryAction:hover {
+  opacity: 0.95;
+}
+
+.secondaryAction {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #111827;
+}
+
+.secondaryAction:hover {
+  background: #f9fafb;
+}
+
+/* ======================================================
+   Card Variants
+====================================================== */
+
+.vertical {
+  grid-row: span 2;
+}
+
+@media (max-width: 1024px) {
+  .vertical {
+    grid-row: auto;
+  }
+}
+
+.media,
+.events {
+  background: #f9fafb;
+}
+
+/* ======================================================
+   Scroll / Sticky Safety
+====================================================== */
+
+/* Prevent content hiding behind sticky headers */
+.main > *:first-child {
+  scroll-margin-top: 96px;
+}

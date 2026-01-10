@@ -1,0 +1,40 @@
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 280px;
+  padding: 16px;
+
+  background: #f3f4f6;
+  border-right: 1px solid #e5e7eb;
+
+  transition: width 0.2s ease;
+}
+
+.minimized {
+  width: 72px;
+}
+
+/* Scroll area */
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 12px;
+}
+
+/* Bottom */
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -1,0 +1,71 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 28px;
+  padding: 0 12px;
+}
+
+/* Logo */
+.logoWrap {
+  flex-shrink: 0;
+}
+
+/* Text */
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sub {
+  font-size: 0.65rem;
+  color: #6b7280;
+}
+
+/* Toggle */
+.collapse {
+  margin-left: auto;
+
+  width: 28px;
+  height: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+
+  color: #374151;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.collapse:hover {
+  background: #e5e7eb;
+  opacity: 1;
+}
+
+/* Minimized */
+.minimized {
+  justify-content: center;
+  gap: 10px;
+  padding: 0 8px;
+}
+
+.minimized .text {
+  display: none;
+}
+
+.minimized .collapse {
+  margin-left: 0;
+}

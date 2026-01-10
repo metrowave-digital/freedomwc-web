@@ -1,0 +1,142 @@
+/* ======================================================
+   Header (Sticky)
+====================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* higher than content + nav */
+
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+
+  padding: 0.75rem 0;
+  margin-bottom: 1.25rem;
+
+  /* Prevent scroll bleed-through */
+  isolation: isolate;
+
+  transition:
+    padding 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* ======================================================
+   Rows
+====================================================== */
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.bottomRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+/* ======================================================
+   Actions
+====================================================== */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ======================================================
+   Avatar (Single Source of Truth)
+====================================================== */
+
+.avatar {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+
+  background: #111827;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  position: absolute;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+/* ======================================================
+   Profile Link (Mobile Only)
+====================================================== */
+
+.profileLink {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.profileLabel {
+  font-size: 0.65rem;
+  margin-top: 0.15rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+/* ======================================================
+   Collapsed State (Optional, Scroll-triggered)
+====================================================== */
+
+.collapsed {
+  padding: 0.35rem 0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.collapsed .topRow {
+  display: none;
+}
+
+/* ======================================================
+   Mobile
+====================================================== */
+
+@media (max-width: 768px) {
+  .bottomRow {
+    align-items: center;
+  }
+
+  .profileLink {
+    display: flex;
+  }
+}
+
+.portalShell {
+  overflow: visible;
+}
