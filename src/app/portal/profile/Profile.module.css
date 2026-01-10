@@ -1293,3 +1293,32 @@
 .staffPill {
   color: var(--text-primary);
 }
+
+/* ==============================
+   MOBILE MODAL FIX (CRITICAL)
+============================== */
+
+.modal {
+  max-height: calc(100dvh - 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.modalBody {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .modalOverlay {
+    align-items: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.modalFoot {
+  position: sticky;
+  bottom: 0;
+  background: #fafafa;
+}
