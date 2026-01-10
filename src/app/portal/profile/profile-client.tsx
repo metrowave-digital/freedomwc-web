@@ -236,13 +236,29 @@ const [profile, setProfile] = useState<ProfileViewModel>({
   useEffect(() => {
   if (!editing) return
 
-  const original = document.body.style.overflow
-  document.body.style.overflow = 'hidden'
+  const body = document.body
+  const html = document.documentElement
+
+  const prevBodyOverflow = body.style.overflow
+  const prevHtmlOverflow = html.style.overflow
+  const prevBodyPosition = body.style.position
+  const prevBodyWidth = body.style.width
+
+  body.style.overflow = 'hidden'
+  html.style.overflow = 'hidden'
+
+  // iOS Safari fix
+  body.style.position = 'fixed'
+  body.style.width = '100%'
 
   return () => {
-    document.body.style.overflow = original
+    body.style.overflow = prevBodyOverflow
+    html.style.overflow = prevHtmlOverflow
+    body.style.position = prevBodyPosition
+    body.style.width = prevBodyWidth
   }
 }, [editing])
+
 
   function open(section: EditSection) {
     if (!section) return
