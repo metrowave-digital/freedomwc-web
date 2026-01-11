@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 export default function LoginPage() {
   useEffect(() => {
-    window.location.href = '/api/auth/start-login'
+    window.location.replace('https://portal.freedomwc.org/')
   }, [])
 
   return null
